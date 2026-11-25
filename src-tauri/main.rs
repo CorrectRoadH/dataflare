@@ -21,7 +21,7 @@ mod window_state;
 mod menu;
 
 use database::ConnectionStore;
-use lifecycle::{AppCheckUpdate, ConnectionsSearch, LicenseActivate, StateCache};
+use lifecycle::{AppCheckUpdate, ConnectionsSearch, StateCache};
 use tauri::async_runtime::{block_on, spawn};
 use tauri::{Manager, RunEvent, WindowEvent, generate_handler};
 use window_state::WindowStateManager;
@@ -54,9 +54,6 @@ fn main() {
         lifecycle::set_app_update_available,
         lifecycle::get_app_update_available,
         lifecycle::is_portable,
-        // License
-        lifecycle::set_license_activated,
-        lifecycle::get_license_activated,
         // Connections page search value
         lifecycle::set_connections_search,
         lifecycle::get_connections_search,
@@ -70,7 +67,6 @@ fn main() {
         // Window
         window::show_connections_window,
         window::show_settings_window,
-        window::show_activate_window,
         window::show_backup_window,
         window::new_database_window,
         // Native
@@ -163,8 +159,7 @@ fn main() {
     builder = builder
         .manage(ConnectionStore::new())
         .manage(ConnectionsSearch::new())
-        .manage(AppCheckUpdate(StateCache::none()))
-        .manage(LicenseActivate(StateCache::none()));
+        .manage(AppCheckUpdate(StateCache::none()));
 
     #[cfg(target_os = "macos")]
     {
@@ -234,7 +229,7 @@ fn main() {
             }
             // Clean up database connections
             match window.label() {
-                window::CONNECTIONS_WINDOW | window::SETTINGS_WINDOW | window::ACTIVATE_WINDOW => {}
+                window::CONNECTIONS_WINDOW | window::SETTINGS_WINDOW => {}
                 // Database Window, Backup Window
                 label => {
                     block_on(app.state::<ConnectionStore>().close(label));

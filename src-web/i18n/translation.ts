@@ -185,62 +185,6 @@ export const translationText = {
         [Language.ja]: '情報',
         [Language.th]: 'เกี่ยวกับ'
     },
-    activate: {
-        [Language.en]: `Activate`,
-        [Language.de]: 'Aktivieren',
-        [Language.frFR]: 'Activé',
-        [Language.zhCN]: `激活`,
-        [Language.ja]: 'アクティベート',
-        [Language.th]: 'เปิดใช้งาน'
-    },
-    activateLimit: {
-        [Language.en]: `You are currently using the free version, which can create a maximum of 2 database connections.`,
-        [Language.de]: `Sie verwenden derzeit die kostenlose Version, die maximal 2 Datenbankverbindungen erstellen kann.`,
-        [Language.frFR]: `Vous utilisez actuellement la version gratuite, qui peut créer un maximum de 2 connexions de base de données.`,
-        [Language.zhCN]: `您当前使用的是免费版本，最多可以创建 2 个数据库连接。`,
-        [Language.ja]: '現在、無料版を使用しています。作成できるデータベース接続は最大2つです。',
-        [Language.th]: 'ขณะนี้คุณกำลังใช้เวอร์ชันฟรีซึ่งสามารถสร้างการเชื่อมต่อฐานข้อมูลได้สูงสุด 2 รายการ'
-    },
-    licenseKey: {
-        [Language.en]: `License Key`,
-        [Language.de]: 'Lizenzschlüssel',
-        [Language.frFR]: `Clé de licence`,
-        [Language.zhCN]: `许可证密钥`,
-        [Language.ja]: 'ライセンスキー',
-        [Language.th]: 'รหัสใบอนุญาต'
-    },
-    activateSuccessTitle: {
-        [Language.en]: 'Activation Successful',
-        [Language.de]: 'Aktivierung Erfolgreich',
-        [Language.frFR]: 'Activation Réussie',
-        [Language.zhCN]: '激活成功',
-        [Language.ja]: 'アクティベーション成功',
-        [Language.th]: 'การเปิดใช้งานสำเร็จ'
-    },
-    activateSuccessMessage: {
-        [Language.en]: `You have successfully activated Dataflare!`,
-        [Language.de]: 'Sie haben Dataflare erfolgreich aktiviert!',
-        [Language.frFR]: `Vous avez activé Dataflare avec succès !`,
-        [Language.zhCN]: `你已成功激活 Dataflare!`,
-        [Language.ja]: 'Dataflareのアクティベーションに成功しました！',
-        [Language.th]: 'คุณเปิดใช้งาน Dataflare สำเร็จแล้ว!'
-    },
-    purchaseLicense: {
-        [Language.en]: `Purchase License`,
-        [Language.de]: 'Lizenz erwerben',
-        [Language.frFR]: `Acheter un license`,
-        [Language.zhCN]: `购买许可证`,
-        [Language.ja]: 'ライセンスの購入',
-        [Language.th]: 'ซื้อใบอนุญาต'
-    },
-    licenseManager: {
-        [Language.en]: `License Manager`,
-        [Language.de]: 'Lizenz-Verwaltung',
-        [Language.frFR]: `Gestionnaire de license`,
-        [Language.zhCN]: `许可证管理器`,
-        [Language.ja]: 'ライセンスマネージャー',
-        [Language.th]: 'การจัดการใบอนุญาต'
-    },
     table: {
         [Language.en]: `Table`,
         [Language.de]: 'Tabelle',
@@ -2794,14 +2738,6 @@ export const translationFn = {
         [Language.zhCN]: (v: string) => `新版本(${v}) 已安装！`,
         [Language.ja]: (v: string) => `新バージョン(${v})がインストールされました！`,
         [Language.th]: (v: string) => `ติดตั้งเวอร์ชันใหม่ (${v}) แล้ว!`
-    },
-    activate: {
-        [Language.en]: (v: string) => `Activate ${v}`,
-        [Language.de]: (v: string) => `${v} aktivieren`,
-        [Language.frFR]: (v: string) => `Activé ${v}`,
-        [Language.zhCN]: (v: string) => `激活 ${v}`,
-        [Language.ja]: (v: string) => `${v}をアクティベート`,
-        [Language.th]: (v: string) => `เปิดใช้งาน ${v}`
     },
     connectTo: {
         [Language.en]: (v: string) => `Connect to: ${v}`,

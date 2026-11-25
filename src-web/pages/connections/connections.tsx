@@ -12,7 +12,6 @@ import {
 import { Direction, Persistent, Pin, showMessageBox, SplitView, Titlebar } from '../../ui'
 import { Welcome } from '../database/layout/welcome'
 import { ConnectionMenuActions } from './actions'
-import { ActivateButton } from './activate'
 import { ConnectionFooter } from './footer'
 import { useConnections } from './hooks'
 import { ConnectionList } from './list'
@@ -90,7 +89,6 @@ export const Connections = () => {
                         }}
                         onDelete={onDeleteConnection}
                     />
-                    <ActivateButton />
                 </div>
                 {selectedConnection === null ? (
                     <Welcome size='small' />

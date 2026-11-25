@@ -34,7 +34,9 @@ winget install Dataflare.Dataflare
 
 #### Linux & other platforms
 
-Please visit Dataflare website to download: https://dataflare.app/download
+Debian and Ubuntu users can download the amd64 or arm64 package from [GitHub Releases](https://github.com/CorrectRoadH/dataflare/releases).
+
+For other platforms visit: https://dataflare.app/download
 
 ## Supported Databases
 
@@ -66,12 +68,6 @@ Please visit Dataflare website to download: https://dataflare.app/download
 - [Trino](https://github.com/trinodb/trino)
 - [Turso & libSQL](https://github.com/tursodatabase/turso)
 - [Workers Analytics Engine](https://developers.cloudflare.com/analytics/analytics-engine/)
-
-## Support Development
-
-If you find Dataflare useful, consider purchasing a license to support continued development. Pay once, own it forever — all features and future updates included.
-
-[Buy a License](https://dataflare.app/#pricing)
 
 ## Contact Us
 

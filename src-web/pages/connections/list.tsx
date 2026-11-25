@@ -17,7 +17,7 @@ import {
 } from '../../tauri'
 import { ConnectionIcon, SearchInput, showMessageBox, ScrollView, Message } from '../../ui'
 import { isMacOS } from '../../utils/os'
-import { useCheckCreateConnection, useConnections } from './hooks'
+import { useConnections } from './hooks'
 
 interface Props {
     select: string | null
@@ -27,7 +27,6 @@ interface Props {
 
 export const ConnectionList = ({ select, onChangeSelect, onDelete }: Props) => {
     const { data: connections, mutate, isLoading } = useConnections()
-    const checker = useCheckCreateConnection()
     const [contextMenuSelect, setContextMenuSelect] = useState<string | null>(null)
     const { displaySearch, search, setSearch } = useSearch(null, 200, setConnectionsSearch)
     const listRef = useRef<HTMLDivElement>(null)
@@ -75,9 +74,6 @@ export const ConnectionList = ({ select, onChangeSelect, onDelete }: Props) => {
     }
 
     const duplicateConnection = async (connection: Connection) => {
-        if (!checker(1)) {
-            return
-        }
         const newName = connection.name + ' Copy'
         const newCid = await ClientData.createConnection(newName, connection.config)
         const newConnections = [...connections!]

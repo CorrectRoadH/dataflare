@@ -56,18 +56,6 @@ pub fn is_portable() -> bool {
     cfg!(feature = "portable")
 }
 
-pub struct LicenseActivate(pub StateCache);
-
-#[command]
-pub fn set_license_activated(sc: State<LicenseActivate>) {
-    sc.0.set(Some(true));
-}
-
-#[command]
-pub fn get_license_activated(sc: State<LicenseActivate>) -> Option<bool> {
-    sc.0.get()
-}
-
 pub struct ConnectionsSearch {
     value: Arc<Mutex<String>>,
 }

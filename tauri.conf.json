@@ -14,7 +14,7 @@
         "targets": ["app", "dmg", "appimage", "nsis"],
         "category": "DeveloperTool",
         "copyright": "Copyright © 2026 Dataflare.",
-        "shortDescription": "",
+        "shortDescription": "Desktop database manager",
         "longDescription": "",
         "icon": [
             "icons/32x32.png",

@@ -20,14 +20,6 @@ export const isPortable = () => {
     return invoke<boolean>('is_portable')
 }
 
-export const setLicenseActivated = () => {
-    return invoke('set_license_activated')
-}
-
-export const getLicenseActivated = () => {
-    return invoke<boolean | null>('get_license_activated')
-}
-
 export const setConnectionsSearch = (value: string) => {
     return invoke('set_connections_search', { value })
 }
