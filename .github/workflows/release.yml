@@ -1,6 +1,12 @@
 name: release
 
 on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing version tag to publish
+        required: true
+        type: string
   push:
     tags:
       - v*.*.*
@@ -162,6 +168,8 @@ jobs:
             runner: ubuntu-22.04-arm
     steps:
       - uses: actions/checkout@v6
+        with:
+          ref: refs/tags/${{ inputs.tag || github.ref_name }}
       - uses: actions/setup-node@v6
         with:
           node-version-file: package.json
@@ -175,10 +183,11 @@ jobs:
           sudo apt-get install -y libwebkit2gtk-4.1-dev build-essential libxdo-dev libssl-dev libayatana-appindicator3-dev librsvg2-dev xdg-utils libclang-dev libkrb5-dev
       - name: Build and verify Debian package
         env:
+          RELEASE_TAG: ${{ inputs.tag || github.ref_name }}
           ARCH: ${{ matrix.arch }}
         run: |
           version=$(node -p "require('./tauri.conf.json').version")
-          test "$GITHUB_REF_NAME" = "v$version"
+          test "$RELEASE_TAG" = "v$version"
           pnpm build --bundles deb --config '{"bundle":{"publisher":"CorrectRoadH","createUpdaterArtifacts":false}}'
           packages=(target/release/bundle/deb/*.deb)
           test "${#packages[@]}" -eq 1
@@ -205,13 +214,14 @@ jobs:
           path: packages
       - name: Publish Debian packages
         env:
+          RELEASE_TAG: ${{ inputs.tag || github.ref_name }}
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
         run: |
           packages=(packages/*.deb)
           test "${#packages[@]}" -eq 2
-          if gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1; then
-            gh release upload "$GITHUB_REF_NAME" "${packages[@]}" --clobber
+          if gh release view "$RELEASE_TAG" >/dev/null 2>&1; then
+            gh release upload "$RELEASE_TAG" "${packages[@]}" --clobber
           else
-            gh release create "$GITHUB_REF_NAME" "${packages[@]}" --verify-tag --generate-notes
+            gh release create "$RELEASE_TAG" "${packages[@]}" --verify-tag --generate-notes
           fi
