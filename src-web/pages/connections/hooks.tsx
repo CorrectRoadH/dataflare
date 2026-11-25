@@ -1,9 +1,6 @@
 import useSWRImmutable from 'swr/immutable'
 import { ClientData, Connection, DatabaseConfig } from '../../tauri'
 
-import useSWRImmutable from 'swr/immutable'
-import { ClientData, Connection, DatabaseConfig } from '../../tauri'
-
 export const useConnections = () => {
     return useSWRImmutable('connections', () => {
         return ClientData.connectionList()
